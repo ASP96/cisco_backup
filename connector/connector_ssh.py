@@ -17,11 +17,11 @@ class ConnectorSSH(Connector):
 
         # create client
         client.connect(ip,
-                            port=port,
-                            username=username,
-                            password=password,
-                            look_for_keys=False,
-                            allow_agent=False)
+                       port=port,
+                       username=username,
+                       password=password,
+                       look_for_keys=False,
+                       allow_agent=False)
 
         # init interactive shell
         self.connect = client.invoke_shell()
@@ -29,10 +29,10 @@ class ConnectorSSH(Connector):
 
         return
 
-    def execute(self, command, delay=1):
+    def execute(self, command, delay=0.5):
         return self.command(command, delay)
 
-    def command(self, command, delay=1, buffer=65535):
+    def command(self, command, delay=0.5, buffer=65535):
         self.connect.send(command + "\n")
         time.sleep(delay)
         output = self.connect.recv(buffer)

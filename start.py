@@ -23,25 +23,13 @@ def start():
         username = input("Enter default username for hardware :   ")
         password = getpass()
 
-    print("Try to remove old directory with configuration.")
-    try:
-        shutil.rmtree("cisco/config")
-    except OSError as e:
-        print("error remove directory ./cisco/config")
-
-    print("Try to remove old directory with info data.")
-    try:
-        shutil.rmtree("cisco/info")
-    except OSError as e:
-        print("error remove directory ./cisco/info")
-
     i = 1
     hardwares = []
     for hw in inventory.hardwares:
         hw.setAuthParam(username, password)
 
         current_time = time.strftime("%H:%M:%S")
-        print(f"# {i}.\t{current_time} {hw.name} [{hw.ip}].\tConnection_type: {hw.connect_type}\t\tOK")
+        print(f"# {i}.\t {current_time} \t {hw.name} [{hw.ip}].\tConnection_type: {hw.connect_type}\t\t" + Bcolors.green("OK"))
         i = i + 1
 
         if hw.personal_auth:

@@ -1,3 +1,4 @@
+from Bcolors import Bcolors
 from command import Command
 from connector.connector_ssh import ConnectorSSH
 from connector.connector_telnet import ConnectorTelnet
@@ -140,7 +141,7 @@ class Cisco:
             path_dir = self.path_config
 
         path_to_file = path_dir + "/" + self.connect_type + tip + "_" + self.name + ".txt"
-        print(path_to_file)
+        print(Bcolors.cyan("\tSaved to file: " + path_to_file))
 
         if not os.path.exists(path_dir):
             os.makedirs(path_dir, mode=0o755)
