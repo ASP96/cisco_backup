@@ -29,10 +29,10 @@ class ConnectorSSH(Connector):
 
         return
 
-    def execute(self, command, delay=0.5):
+    def execute(self, command, delay=0.3):
         return self.command(command, delay)
 
-    def command(self, command, delay=0.5, buffer=65535):
+    def command(self, command, delay=0.3, buffer=65535):
         self.connect.send(command + "\n")
         time.sleep(delay)
         output = self.connect.recv(buffer)

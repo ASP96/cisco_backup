@@ -6,11 +6,17 @@ import time
 import inventory
 import shutil
 from Bcolors import Bcolors
+import logging
 
 reload(sys)
 
 debug = 1
 
+logging.getLogger('paramiko').setLevel(logging.WARNING)
+
+logging.basicConfig(
+    format='%(threadName)s %(name)s %(levelname)s: %(message)s',
+    level=logging.INFO)
 
 
 def start():
@@ -29,7 +35,9 @@ def start():
         hw.setAuthParam(username, password)
 
         current_time = time.strftime("%H:%M:%S")
-        print(f"# {i}.\t {current_time} \t {hw.name} [{hw.ip}].\tConnection_type: {hw.connect_type}\t\t" + Bcolors.green("OK"))
+        print(
+            f"# {i}.\t {current_time} \t {hw.name} [{hw.ip}].\tConnection_type: {hw.connect_type}\t\t" + Bcolors.green(
+                "OK"))
         i = i + 1
 
         if hw.personal_auth:

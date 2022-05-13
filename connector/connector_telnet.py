@@ -30,10 +30,10 @@ class ConnectorTelnet(Connector):
         self.connect = client
         time.sleep(2)
 
-    def execute(self, command, delay=0.5):
+    def execute(self, command, delay=0.3):
         return self.command(command, delay)
 
-    def command(self, command, delay=0.5, buffer=65535):
+    def command(self, command, delay=0.3, buffer=65535):
         # print("Debug:   len=", len(self.connect.read_very_eager().decode('ascii')))
         # print(f"\t ++++++++++++++++++Command: {command}")
 
